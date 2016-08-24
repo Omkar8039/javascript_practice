@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Hi there</title>
+<style>
+#p2:hover{background-color:orange;
+}
+</style>
+</head>
+<body>
+ <p id="p1" onclick="alert('First paragraph was clicked');">This is a paragraph.</p>
+ <p id="p2">Rollover this paragraph,it will create a click for the one above.</p>
+ <script>
+  document.getElementById("p2").addEventListener("mouseover",function()
+  {
+     var evt=document.createEvent("HTMLEvents");
+     evt.initEvent("click","true","true");
+     document.getElementById('p1').dispatchEvent(evt);
+   
+  },false);
+ </script>
+</body>
+</html>

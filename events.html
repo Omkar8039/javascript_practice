@@ -1,0 +1,42 @@
+<html>
+<head>
+   <title>Practice</title>
+</head>
+<body>
+<script>
+	function logEvent(e)
+	{
+		var attributes=["type","srcElement","currentTarget","clientX","clientY","offsetX","offsetY","screenX","screenY","x","y","formElement","toElement","keyCode","altKey","ctrlKey","shiftKey","button","which"];
+		var str="EVENT LOG<br>";
+		for(var i=0;i<attributes.length;i++)
+		{
+			str+="e."+attributes[i]+"="+e[attributes[i]]+"<br>";
+		}
+		document.getElementById("message").innerHTML=str;
+	}
+	window.addEventListener("load",function()
+	{
+      document.getElementById("txtArea").addEventListener("keyup",logEvent,false);
+      document.getElementById("mouseOver").addEventListener("mouseover",logEvent,false);
+      document.getElementById("mouseOver").addEventListener("mousemove",logEvent,false);
+      document.getElementsById('mouseOver').addEventListener("mouseout",logEvent,false);
+      document.querySelector('button').addEventListener("click",logEvent,false);
+
+	},false);
+</script>
+<div id="container">
+<div id="message" style="float:right;background-color:yellow;"></div>
+</div>
+<form>
+<textarea id="txtArea" rows="4" cols="40">
+Try typing here
+</textarea>
+<br><br>
+<div id="mouseOver" style="width:400px;height:300px;background:green;">
+<span style="color:white;">Mouse over</span> 
+</div>
+<br>
+<input type="button" id="btnClick" type="button" value="Click me">
+</form>
+</body>
+</html>
