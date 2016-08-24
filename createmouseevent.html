@@ -1,0 +1,50 @@
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Create mouse event</title>
+</head>
+<body>
+  <script>
+     function simulate()
+     {
+     	for (var i=0;i<5;i++)
+     	{
+     		var evt=document.createEvent("MouseEvent");
+     		evt.initMouseEvent("click",true,true,window,0,0,0,Math.floor(Math.random()*800),Math.floor(Math.random()*600),false,false,false,false,0,null);
+     		document.body.dispatchEvent(evt);
+     	}
+     }
+     function creatediv(evt)
+     {
+         if(!evt)
+         	evt=window.event;
+         if(evt.target!=document.getElementById("simulateBtn"))
+         {
+         	var newDiv=document.createElement("div");
+         	newDiv.style.position="absolute";
+         	newDiv.style.width="25px";
+            newDiv.style.height="25px";
+            newDiv.style.backgroundColor="blue";
+            newDiv.style.left=evt.clientX +"px";
+            newDiv.style.top=evt.clientY +"px";
+            document.body.appendChild(newDiv);
+         }
+     }
+     window.addEventListener("load",function()
+     {
+         document.getElementById("simulateBtn").addEventListener("click",simulate,true);
+         document.body.addEventListener("click",creatediv,true);
+
+ 
+     },true);
+  </script>
+  <h1>Create Mouse Event</h1>
+  <p>Click on page to create boxes the button to simulate 5 mouse clicks</p>
+  <form>
+     <input type="button" id="simulateBtn" value="Simulate Clicks">
+
+  </form>
+  <div style="height:1000px; width:100%;"></div>
+
+
+</body>
